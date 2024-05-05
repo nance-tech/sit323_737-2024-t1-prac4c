@@ -1,0 +1,48 @@
+ Simple Calculator Microservice
+ =====================================
+
+ Overview
+ ---------
+
+This is a simple calculator RESTful API microservice built using Node.js and Express. It provides basic arithmetic operations such as addition, subtraction, multiplication, and division. It also provides error handling mechanisms for validation.
+
+It uses winston logger for logging in the application.
+
+
+Installation
+----------------
+
+requirements:
+1. docker
+2. docker compose
+3. git
+
+To get started i installed docker, docker compose and git in my machine
+Next I cloned my previous repository in order to deploy it to docker container.
+
+I created two files:
+1. Dockerfile
+2. docker-compose.yaml
+
+Deploying to docker
+----------------------
+
+After creating Dockerfile I proceeded to deploy my application to docker container using bellow commmand
+
+  docker build -t microservice-calculator
+  
+Then I run the container using bellow command:
+  docker run -itd --name calculator-container -p 4000:4000 microservice-calculator
+
+
+Deploying using docker compose
+--------------------------------
+
+I wrote docker compose configuration to docker-compose.yaml and then build my docker compose image using the command:
+  docker compose build
+
+Then i deployed the application using the command:
+  docker compose up
+
+
+Finally I implemented health check to monitor my application status and to ensure that i restarts in case of failures:
