@@ -1,48 +1,261 @@
  Simple Calculator Microservice
- =====================================
 
  Overview
- ---------
 
-This is a simple calculator RESTful API microservice built using Node.js and Express. It provides basic arithmetic operations such as addition, subtraction, multiplication, and division. It also provides error handling mechanisms for validation.
+This is a simple calculator RESTful API microservice built using Node.js and Express. 
+It provides basic arithmetic operations such as addition, subtraction, multiplication, division, modulo, square root and exponential operations. 
+It also provides error handling mechanisms for validation.
 
 It uses winston logger for logging in the application.
 
+ Usage
 
-Installation
-----------------
-
-requirements:
-1. docker
-2. docker compose
-3. git
-
-To get started i installed docker, docker compose and git in my machine
-Next I cloned my previous repository in order to deploy it to docker container.
-
-I created two files:
-1. Dockerfile
-2. docker-compose.yaml
-
-Deploying to docker
-----------------------
-
-After creating Dockerfile I proceeded to deploy my application to docker container using bellow commmand
-
-  docker build -t microservice-calculator
-  
-Then I run the container using bellow command:
-  docker run -itd --name calculator-container -p 4000:4000 microservice-calculator
+ Base URL
 
 
-Deploying using docker compose
---------------------------------
-
-I wrote docker compose configuration to docker-compose.yaml and then build my docker compose image using the command:
-  docker compose build
-
-Then i deployed the application using the command:
-  docker compose up
+http://localhost:4000
 
 
-Finally I implemented health check to monitor my application status and to ensure that i restarts in case of failures:
+ Endpoints
+
+
+1. Health Check
+
+  EndPoint: /
+ Method: GET
+ Description: Checks if the microservice is running. Use this to check if the server is running.
+ Response:
+
+   Status Code: 200 OK
+
+    
+    {
+      "message": "Calculator Microservice Running"
+    }
+    
+
+
+
+2. Addition Endpoint
+
+ EndPoint: /add/:num1/:num2
+ Method: GET
+ Description: Performs addition operation on two numbers.
+ Parameters:
+   num1 (number): The first operand.
+   num2 (number): The second operand.
+ Response:
+
+   Status Code: 200 OK
+   Body:
+
+    {
+      "result": <addition result>
+    }
+    
+
+   Status Code: 400 BAD REQUEST
+   Body:
+
+    {
+      "error": <error description>
+    }
+    
+
+
+
+3. Subtraction Endpoint
+
+ EndPoint: /subtract/:num1/:num2
+ Method: GET
+ Description: Performs subtraction operation on two numbers.
+ Parameters:
+   num1 (number): The first operand.
+   num2 (number): The second operand.
+ Response:
+
+   Status Code: 200 OK
+   Body:
+
+    {
+      "result": <subtraction result>
+    }
+    
+
+   Status Code: 400 BAD REQUEST
+   Body:
+
+    {
+      "error": <error description>
+    }
+    
+
+
+
+4. Multiplication Endpoint
+
+ EndPoint: /multiply/:num1/:num2
+ Method: GET
+ Description: Performs multiplication operation on two numbers.
+ Parameters:
+   num1 (number): The first operand.
+   num2 (number): The second operand.
+ Response:
+
+   Status Code: 200 OK
+   Body:
+
+    {
+      "result": <multiplication result>
+    }
+    
+
+   Status Code: 400 BAD REQUEST
+   Body:
+
+    {
+      "error": <error description>
+    }
+    
+
+
+
+5. Division Endpoint
+
+ EndPoint: /divide/:num1/:num2
+ Method: GET
+ Description: Performs division operation on two numbers.
+ Parameters:
+   num1 (number): The first operand.
+   num2 (number): The second operand.
+ Response:
+
+   Status Code: 200 OK
+   Body:
+
+    
+    {
+      "result": <division result>
+    }
+    
+
+   Status Code: 400 BAD REQUEST
+   Body:
+
+    
+    {
+      "error": <error description>
+    }
+
+6. Modulo
+
+ EndPoint: /modulo/:num1/:num2
+ Method: GET
+ Description: Performs modulus operation on given two numbers.
+ Parameters:
+   num1 (number): The first operand.
+   num2 (number): The second operand.
+ Response:
+
+   Status Code: 200 OK
+   Body:
+
+    
+    {
+      "result": <modulus result>
+    }
+    
+
+   Status Code: 400 BAD REQUEST
+   Body:
+
+    
+    {
+      "error": <error description>
+    }
+    
+7. Square Root 
+
+ EndPoint: /sqrt/:num1
+ Method: GET
+ Description: Performs square root operation on a given number.
+ Parameters:
+   num1 (number): The first operand.
+ Response:
+
+   Status Code: 200 OK
+   Body:
+
+    
+    {
+      "result": <square root result>
+    }
+    
+
+   Status Code: 400 BAD REQUEST
+   Body:
+
+    
+    {
+      "error": <error description>
+    }
+
+8. Exponential
+
+ EndPoint: /exponential/:num1/:num2
+ Method: GET
+ Description: Performs exponential operation on given two numbers.
+ Parameters:
+   num1 (number): The first operand.
+   num2 (number): The second operand.
+ Response:
+
+   Status Code: 200 OK
+   Body:
+
+    
+    {
+      "result": <exponential result>
+    }
+    
+
+   Status Code: 400 BAD REQUEST
+   Body:
+
+    
+    {
+      "error": <error description>
+    }
+
+
+ Examples
+
+Addition: http://localhost:4000/add/6/8
+
+ Result: 14
+
+Subtraction: http://localhost:4000/subtract/10/8
+
+ Result: 2
+
+Multiplication: http://localhost:4000/multiply/6/7
+
+ Result: 42
+
+Division: http://localhost:4000/divide/24/8
+
+ Result: 3
+
+Modulo: http://localhost:4000/modulo/7/3
+
+ Result: 1
+
+Square Root: http://localhost:4000/sqrt/25
+
+ Result: 5
+
+Exponential: http://localhost:4000/exponential/2/4
+
+ Result: 16
+
+

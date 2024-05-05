@@ -1,0 +1,4 @@
+{"level":"info","message":"Microservice running at http://localhost:4000","service":"calculator-microservice"}
+{"level":"info","message":"New square root operation has been requested: 64","service":"calculator-microservice"}
+{"level":"info","message":"New Exponential operation has been requested: 3**4","service":"calculator-microservice"}
+{"level":"info","message":"New modulo operation has been requested: 7 % 3","service":"calculator-microservice"}
