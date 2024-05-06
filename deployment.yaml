@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-microservice
+spec:
+  selector:
+    matchLabels:
+      app: calculator-microservice
+  template:
+    metadata:
+      labels:
+        app: calculator-microservice
+    spec:
+      containers:
+      - name: calculator-microservice
+        image: nancetech/my-calculator
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 4000
